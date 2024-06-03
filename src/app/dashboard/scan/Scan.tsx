@@ -34,7 +34,7 @@ const Page: React.FC = () => {
             onClick={handleManualClick}
             className="px-4 py-2 bg-custom-green text-white rounded-md"
           >
-            {manualCode ? 'Scan QR' : 'Enter Code'}
+            {manualCode ? '&apos;Scan QR&apos;' : '&apos;Enter Code&apos;'}
           </button>
         </div>
         <div className="w-full">
