@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { IndexType } from '../../types/types'
 
 const OTPInput = () => {
   const [otp, setOtp] = useState(new Array(5).fill(''));
 
-  const handleChange = (index: number, value: string) => {
+  const handleChange = (index: IndexType, value: string) => {
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
