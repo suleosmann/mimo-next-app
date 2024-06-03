@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 const PinCreation = () => {
   const [otp, setOtp] = useState(new Array(5).fill(''));
 
-  const handleChange = (index, value) => {
+  const handleChange = (index: number, value: string) => {
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
 
     if (value && index < 3) {
-      const nextInput = document.querySelector(`input[data-otp-index="${index + 1}"]`);
+      const nextInput = document.querySelector(`input[data-otp-index="${index + 1}"]`) as HTMLInputElement;
       nextInput.focus();
     } else if (!value && index > 0) {
-      const prevInput = document.querySelector(`input[data-otp-index="${index - 1}"]`);
+      const prevInput = document.querySelector(`input[data-otp-index="${index - 1}"]`) as HTMLInputElement;
       prevInput.focus();
     }
   };
