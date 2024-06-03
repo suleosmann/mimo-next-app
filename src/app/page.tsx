@@ -87,9 +87,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8">Contact Us</h2>
           <p className="text-lg mb-8">
-  Have a question or need assistance? Don&apos;t hesitate to reach out to
-  our friendly team. We&apos;re here to help!
+  Have a question or need assistance? Don&#39;t hesitate to reach out to
+  our friendly team. We&#39;re here to help!
 </p>
+
+
 
           {/* Add a contact form or contact information */}
         </div>
