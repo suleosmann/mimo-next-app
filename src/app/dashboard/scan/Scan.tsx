@@ -34,13 +34,7 @@ const Page: React.FC = () => {
             onClick={handleManualClick}
             className="px-4 py-2 bg-custom-green text-white rounded-md"
           >
-            {manualCode ? (
-              // eslint-disable-next-line react/no-unescaped-entities
-              'Scan QR'
-            ) : (
-              // eslint-disable-next-line react/no-unescaped-entities
-              'Enter Code'
-            )}
+            {manualCode ? 'Scan QR' : 'Enter Code'}
           </button>
         </div>
         <div className="w-full">
