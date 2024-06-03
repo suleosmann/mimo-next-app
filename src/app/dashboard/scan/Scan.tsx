@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { QrReader } from 'react-qr-reader';
+import QrScanner from 'react-qr-scanner';
 
 const Page: React.FC = () => {
   const [result, setResult] = useState<string | null>(null);
   const [manualCode, setManualCode] = useState<boolean>(false);
   const [manualInput, setManualInput] = useState<string>('');
 
-  const handleScan: QrReader.props['onScan'] = (data) => {
+  const handleScan = (data: string | null) => {
     if (data) {
       setResult(data);
     }
   };
 
-  const handleError: QrReader.props['onError'] = (err) => {
+  const handleError = (err: any) => {
     console.error(err);
   };
 
@@ -23,30 +23,21 @@ const Page: React.FC = () => {
   };
 
   const handleManualClick = () => {
-    setManualCode(prevState => !prevState);
-  }
+    setManualCode((prevState) => !prevState);
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center justify-center p-4">
+      <div className="flex flex-col items-center space-y-4 w-full max-w-md">
         <div className="flex space-x-4">
-          {manualCode ? (
-            <button
-              onClick={handleManualClick}
-              className="px-4 py-2 bg-custom-green text-white rounded-md"
-            >
-              Scan QR
-            </button>
-          ) : (
-            <button
-              onClick={handleManualClick}
-              className="px-4 py-2 bg-custom-green text-white rounded-md"
-            >
-              Enter Code
-            </button>
-          )}
+          <button
+            onClick={handleManualClick}
+            className="px-4 py-2 bg-custom-green text-white rounded-md"
+          >
+            {manualCode ? 'Scan QR' : 'Enter Code'}
+          </button>
         </div>
-        <div className="w-[80vw] max-w-md">
+        <div className="w-full">
           {manualCode ? (
             <div className="flex flex-col items-center space-y-4">
               <input
@@ -64,7 +55,7 @@ const Page: React.FC = () => {
               </button>
             </div>
           ) : (
-            <QrReader
+            <QrScanner
               delay={300}
               onError={handleError}
               onScan={handleScan}
@@ -72,7 +63,7 @@ const Page: React.FC = () => {
             />
           )}
         </div>
-        {result && <p className="mt-4">Result: {result}</p>}
+        {result && <p className="mt-4 text-center text-custom-dark-green font-bold">Result: {result}</p>}
       </div>
     </div>
   );
